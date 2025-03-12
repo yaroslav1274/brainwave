@@ -5,17 +5,46 @@ import { benefits } from "../constants";
 import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Benefits = () => {
+  useGSAP(() => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".animated1",
+        start: "30% center",
+        end: "bottom center",
+        scrub: 1,
+        markers: false,
+        ease: "power1.inOut",
+      },
+    });
+    tl.fromTo(
+      ".animated1",
+      {
+        opacity: 0,
+        x: 800,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 3,
+      }
+    );
+  }, []);
+
   return (
     <Section id="features">
       <div className="container relative z-2">
         <Heading
-          className="md:max-w-md lg:max-w-2xl"
+          className="animated1 md:max-w-md lg:max-w-2xl"
           title="Chat smarter, Not harder with Brainwave"
         />
 
-        <div className="flex flex-wrap gap-10 mb-10">
+        <div className="animated1 flex flex-wrap gap-10 mb-10">
           {benefits.map((item) => (
             <div
               className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"

@@ -16,6 +16,32 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
+  useGSAP(() => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".animated2",
+        start: "-80% center",
+        end: "20% center",
+        scrub: 1,
+        markers: false,
+        ease: "power1.inOut",
+      },
+    });
+
+    tl.fromTo(
+      ".animated2",
+      {
+        opacity: 0,
+        x: -700,
+      },
+      {
+        x: 100,
+        opacity: 1,
+        duration: 2,
+      }
+    );
+  }, []);
+
   return (
     <Section id="how-to-use">
       <div className="container">

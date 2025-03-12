@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { curve, heroBackground, robot } from "../assets";
 import Button from "./Button";
 import Section from "./Section";
@@ -11,22 +11,11 @@ import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const parallaxRef = useRef(null);
-
-  useGSAP(() => {
-    gsap.fromTo(
-      "#hero",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 2,
-      }
-    );
-  }, []);
 
   return (
     <Section
